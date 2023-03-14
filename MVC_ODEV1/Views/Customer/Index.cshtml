@@ -1,0 +1,37 @@
+﻿@model  List<MVC_ODEV1.ViewModels.CustomerVM>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Müsteriler</h2>
+<br />
+<p><a href="~/Customer/AddCustomer" class="btn btn-primary"> Müşteri ekle  </a></p>
+<br />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">İşlemler</th>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th scope="row">@item.ID</th>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>
+
+                @Html.ActionLink("Güncelle", "UpdateCustomer", new { ID = item.ID }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Sil", "DeleteCustomer", new { ID = item.ID }, new { @class = "btn btn-danger" })
+            </td>
+
+            
+        </tr>
+        }
+
+    </tbody>
+        </table>
